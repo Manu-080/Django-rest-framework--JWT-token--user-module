@@ -1,6 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.utils.decorators import method_decorator
-from django.views.decorators.csrf import csrf_exempt
 
 # rest frame work
 from rest_framework.views import APIView
@@ -90,7 +88,6 @@ class UserProfile(APIView): # DASHBOARD
         print(user)
         return Response(serializer.data, status=status.HTTP_200_OK)
     
-@method_decorator(csrf_exempt, name='dispatch')
 class Logout(APIView):
     permission_classes =[IsAuthenticated]
     authentication_classes = [JWTAuthentication]
